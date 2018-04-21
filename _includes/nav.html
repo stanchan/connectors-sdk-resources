@@ -10,7 +10,6 @@
 			{{ item.text }}
 			{% endif %}
 			{% if item.url contains "/releases/" %}
-			{% assign releases_versions = "v4.0.1|v4.0.2|v4.0.3" | split: "|" %}
 			<ul>
 				{% for item_version in site.github.releases %}
 				<li><a href="#">***{{item_version.tag_name}}
