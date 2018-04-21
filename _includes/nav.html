@@ -3,7 +3,7 @@
 <ul>
 	{% for item in include.nav %}
 	<li>
-		<a href="{{ item.url }}">
+		<a href="#">
 			{% if item.url == navurl %}
 			<b>{{ item.text }}</b>
 			{% else %}
@@ -12,16 +12,11 @@
 			{% if item.url contains "/releases/" %}
 			{% assign releases_versions = "v4.0.1|v4.0.2|v4.0.3" | split: "|" %}
 			<ul>
-				<!-- Instead of iterate a variable releases_version, it should use site.github.releases-->
-				<!--{% for releases_versions in site.github.releases %}-->
-				<!--<li ><a href="/releases/{{release.tag_name}}">version {{releases_versions.tag_name}}</a></li>-->
-				<!--{% endfor %}-->
-
-				{% for item_version in releases_versions %}
-				<li><a href="#">***{{item_version}}
+				{% for item_version in site.github.releases %}
+				<li><a href="#">***{{item_version.tag_name}}
 					<ul>
 						{% for page in site.pages %}
-						{% if page.url contains item_version %}
+						{% if page.url contains item_version.tag_name %}
 						<li>
 							<a href="{{site.github.baseurl}}{{ page.url }}">*****{{ page.title }}</a>
 						</li>
